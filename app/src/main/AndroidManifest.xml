@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.theelitedevelopers.e_clearance" >
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EClearance" >
+        <activity
+            android:name=".modules.login.LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.security.SecurityClearanceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.payment.PayStackWebViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.result_clearance.ResultClearanceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.bursary.BursaryClearanceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.admin.AdminClearanceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.alumni.AlumniClearanceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.student_affairs.StudentAffairsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.library.LibraryClearanceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.faculty.FacultyClearanceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.department.DepartmentClearanceActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.onboarding.OnBoardingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".modules.splashscreen.SplashScreen"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

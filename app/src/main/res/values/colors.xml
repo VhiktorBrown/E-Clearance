@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#0a294e</color>
+    <color name="completedColor">#2b9272</color>
+    <color name="startColor">#3eb0ff</color>
+    <color name="textColor">#8f9ba7</color>
+    <color name="ash_background">#eff5fd</color>
+    <color name="black">#FF000000</color>
+    <color name="secondary">#ffffff</color>
+</resources>

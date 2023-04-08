@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/secondary"
+    tools:context=".MainActivity">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/main_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/graduate_image"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:src="@drawable/graduate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:tint="@color/startColor" />
+
+            <TextView
+                android:id="@+id/regNumber_department"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2018514038, Computer Science"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/startColor"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/graduate_image"
+                android:layout_marginTop="@dimen/_15sdp" />
+
+            <TextView
+                android:id="@+id/progress_status_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Hi Francis! Let's walk you through your Clearance"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/_16ssp"
+                android:textAlignment="gravity"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/regNumber_department"
+                android:layout_marginTop="@dimen/_10sdp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintTop_toBottomOf="@+id/progress_status_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@color/ash_background">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/results_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_100sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/completed_bg">
+
+                    <TextView
+                        android:id="@+id/results_clearance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Results Status Clearance"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/completedColor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/results_clearance_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Start your clearance by downloading clearance form ask to get your results status."
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/completedColor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/results_clearance_text"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/results_clearance_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Completed"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/completedColor"
+                        app:layout_constraintTop_toTopOf="@+id/results_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/results_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"/>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/results_image_done"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/completed_rounded"
+                    android:src="@drawable/ic_done"
+                    android:padding="@dimen/_3sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/results_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/results_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/results_index_textView"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/start_rounded"
+                    android:text="1"
+                    android:visibility="gone"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:textColor="@color/startColor"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/results_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/results_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/departmental_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_90sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/results_layout"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/completed_bg">
+
+                    <TextView
+                        android:id="@+id/departmental_clearance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Departmental Clearance"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/completedColor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/departmental_clearance_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Upload all your deparmental related documents"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/completedColor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/departmental_clearance_text"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/departmental_clearance_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Completed"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/completedColor"
+                        app:layout_constraintTop_toTopOf="@+id/departmental_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/departmental_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"/>
+
+                    <ImageView
+                        android:id="@+id/departmental_clearance_locked"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_locked"
+                        app:layout_constraintTop_toTopOf="@+id/departmental_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/departmental_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:visibility="gone"
+                        app:tint="@color/textColor" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/departmental_image_done"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/completed_rounded"
+                    android:src="@drawable/ic_done"
+                    android:padding="@dimen/_3sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/departmental_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/departmental_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/departmental_index_textView"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/start_rounded"
+                    android:text="1"
+                    android:visibility="gone"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:textColor="@color/startColor"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/departmental_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/departmental_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/faculty_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_90sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/departmental_layout"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/start_bg">
+
+                    <TextView
+                        android:id="@+id/faculty_clearance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Faculty Clearance"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/primary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/faculty_clearance_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Upload all your Faculty related documents"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/textColor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/faculty_clearance_text"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/faculty_clearance_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/startColor"
+                        app:layout_constraintTop_toTopOf="@+id/faculty_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/faculty_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"/>
+
+                    <ImageView
+                        android:id="@+id/faculty_clearance_locked"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_locked"
+                        app:layout_constraintTop_toTopOf="@+id/faculty_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/faculty_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        android:visibility="gone"
+                        app:tint="@color/textColor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/faculty_image_done"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/completed_rounded"
+                    android:src="@drawable/ic_done"
+                    android:visibility="gone"
+                    android:padding="@dimen/_3sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/faculty_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/faculty_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/faculty_index_textView"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/start_rounded"
+                    android:text="2"
+                    android:visibility="visible"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:textColor="@color/startColor"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/faculty_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/faculty_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/library_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_90sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/faculty_layout"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/start_bg">
+
+                    <TextView
+                        android:id="@+id/library_clearance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Library Clearance"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/primary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/Library_clearance_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Upload all your Library related documents"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/textColor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/library_clearance_text"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/library_clearance_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start"
+                        android:visibility="gone"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/startColor"
+                        app:layout_constraintTop_toTopOf="@+id/library_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/library_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"/>
+
+                    <ImageView
+                        android:id="@+id/library_clearance_locked"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_locked"
+                        app:layout_constraintTop_toTopOf="@+id/library_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/library_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        app:tint="@color/textColor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/library_image_done"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/completed_rounded"
+                    android:src="@drawable/ic_done"
+                    android:visibility="gone"
+                    android:padding="@dimen/_3sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/library_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/library_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/library_index_textView"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/start_rounded"
+                    android:text="3"
+                    android:visibility="visible"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:textColor="@color/startColor"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/library_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/library_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/security_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_90sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/library_layout"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/start_bg">
+
+                    <TextView
+                        android:id="@+id/security_clearance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Security Clearance"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/primary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/security_clearance_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Start your security clearance and check to see if you have no issues with Security"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/textColor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/security_clearance_text"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/security_clearance_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start"
+                        android:visibility="gone"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/startColor"
+                        app:layout_constraintTop_toTopOf="@+id/security_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/security_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"/>
+
+                    <ImageView
+                        android:id="@+id/security_clearance_locked"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_locked"
+                        app:layout_constraintTop_toTopOf="@+id/security_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/security_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        app:tint="@color/textColor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/security_image_done"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/completed_rounded"
+                    android:src="@drawable/ic_done"
+                    android:visibility="gone"
+                    android:padding="@dimen/_3sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/security_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/security_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/security_index_textView"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/start_rounded"
+                    android:text="4"
+                    android:visibility="visible"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:textColor="@color/startColor"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/security_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/security_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/student_affairs_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_90sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/security_layout"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/start_bg">
+
+                    <TextView
+                        android:id="@+id/student_affairs_clearance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Student Affairs Clearance"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/primary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/student_affairs_clearance_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Pay NGN 1,000 and get your NYSC temporal ID card."
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/textColor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/student_affairs_clearance_text"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/student_affairs_clearance_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start"
+                        android:visibility="gone"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/startColor"
+                        app:layout_constraintTop_toTopOf="@+id/student_affairs_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/student_affairs_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"/>
+
+                    <ImageView
+                        android:id="@+id/student_affairs_clearance_locked"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_locked"
+                        app:layout_constraintTop_toTopOf="@+id/student_affairs_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/student_affairs_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        app:tint="@color/textColor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/student_affairs_image_done"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/completed_rounded"
+                    android:src="@drawable/ic_done"
+                    android:visibility="gone"
+                    android:padding="@dimen/_3sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/student_affairs_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/student_affairs_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/student_affairs_index_textView"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/start_rounded"
+                    android:text="5"
+                    android:visibility="visible"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:textColor="@color/startColor"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/student_affairs_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/student_affairs_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/alumni_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_90sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/student_affairs_layout"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/start_bg">
+
+                    <TextView
+                        android:id="@+id/alumni_clearance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alumni Clearance"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/primary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/alumni_clearance_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Pay NGN 5,000 and get your ALumni Related Materials."
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/textColor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/alumni_clearance_text"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/alumni_clearance_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start"
+                        android:visibility="gone"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/startColor"
+                        app:layout_constraintTop_toTopOf="@+id/alumni_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/alumni_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"/>
+
+                    <ImageView
+                        android:id="@+id/alumni_clearance_locked"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_locked"
+                        app:layout_constraintTop_toTopOf="@+id/alumni_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/alumni_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        app:tint="@color/textColor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/alumni_image_done"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/completed_rounded"
+                    android:src="@drawable/ic_done"
+                    android:visibility="gone"
+                    android:padding="@dimen/_3sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/alumni_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/alumni_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/alumni_index_textView"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/start_rounded"
+                    android:text="6"
+                    android:visibility="visible"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:textColor="@color/startColor"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/alumni_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/alumni_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/admin_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_110sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/alumni_layout"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/start_bg">
+
+                    <TextView
+                        android:id="@+id/admin_clearance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Admin Clearance"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/primary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/admin_clearance_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Download Form from Bursary to confirm school fees payment and upload school fees receipt for Confirmation."
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/textColor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/admin_clearance_text"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/admin_clearance_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start"
+                        android:visibility="gone"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/startColor"
+                        app:layout_constraintTop_toTopOf="@+id/admin_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/admin_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"/>
+
+                    <ImageView
+                        android:id="@+id/admin_clearance_locked"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_locked"
+                        app:layout_constraintTop_toTopOf="@+id/admin_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/admin_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        app:tint="@color/textColor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/admin_image_done"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/completed_rounded"
+                    android:src="@drawable/ic_done"
+                    android:visibility="gone"
+                    android:padding="@dimen/_3sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/admin_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/admin_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/admin_index_textView"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/start_rounded"
+                    android:text="7"
+                    android:visibility="visible"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:textColor="@color/startColor"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/admin_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/admin_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bursary_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_90sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/admin_layout"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/start_bg">
+
+                    <TextView
+                        android:id="@+id/bursary_clearance_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bursary Clearance(Final)"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/primary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_15sdp" />
+
+                    <TextView
+                        android:id="@+id/bursary_clearance_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Confirm all receipts"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/textColor"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/bursary_clearance_text"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp" />
+
+                    <TextView
+                        android:id="@+id/bursary_clearance_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Start"
+                        android:visibility="gone"
+                        android:fontFamily="@font/poppins_bold"
+                        android:textColor="@color/startColor"
+                        app:layout_constraintTop_toTopOf="@+id/bursary_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/bursary_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"/>
+
+                    <ImageView
+                        android:id="@+id/bursary_clearance_locked"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_locked"
+                        app:layout_constraintTop_toTopOf="@+id/bursary_clearance_text"
+                        app:layout_constraintBottom_toBottomOf="@+id/bursary_clearance_text"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginEnd="@dimen/_15sdp"
+                        app:tint="@color/textColor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/bursary_image_done"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/completed_rounded"
+                    android:src="@drawable/ic_done"
+                    android:visibility="gone"
+                    android:padding="@dimen/_3sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/bursary_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/bursary_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+                <TextView
+                    android:id="@+id/bursary_index_textView"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/start_rounded"
+                    android:text="8"
+                    android:visibility="visible"
+                    android:textAlignment="gravity"
+                    android:gravity="center"
+                    android:textColor="@color/startColor"
+                    android:fontFamily="@font/poppins_bold"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/bursary_layout"
+                    app:layout_constraintBottom_toBottomOf="@+id/bursary_layout"
+                    android:layout_marginStart="@dimen/_13sdp" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

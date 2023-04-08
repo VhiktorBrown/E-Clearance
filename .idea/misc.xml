@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/drawable/button.xml" value="0.19074074074074074" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/drawable/completed_bg.xml" value="0.19537037037037036" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/drawable/completed_rounded.xml" value="0.19537037037037036" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/drawable/locked_bg.xml" value="0.19537037037037036" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/drawable/primary_button.xml" value="0.18307692307692308" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/drawable/shape_round.xml" value="0.19074074074074074" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/drawable/start_bg.xml" value="0.19537037037037036" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/drawable/start_rounded.xml" value="0.19537037037037036" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_admin_clearance.xml" value="0.22" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_alumni_clearance.xml" value="0.22" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_bursary_clearance.xml" value="0.22" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_department_clearance.xml" value="0.22" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_faculty_clearance.xml" value="0.18" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_library_clearance.xml" value="0.22" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_main.xml" value="0.21" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_on_boarding.xml" value="0.1078125" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_pay_stack_webview.xml" value="0.11503623188405797" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_result_clearance.xml" value="0.18" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_security_clearance.xml" value="0.22" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_splash_screen.xml" value="0.1082427536231884" />
+        <entry key="..\:/Users/VICTOR/AndroidStudioProjects/EClearance/app/src/main/res/layout/activity_student_affairs.xml" value="0.22" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
