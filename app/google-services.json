@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "83653153236",
+    "project_id": "eclearance-114dd",
+    "storage_bucket": "eclearance-114dd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:83653153236:android:7c8cb249e2ee0bccd9c641",
+        "android_client_info": {
+          "package_name": "com.theelitedevelopers.e_clearance"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "83653153236-inci71l367b8eijqshb153u6d7qe5g07.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.theelitedevelopers.e_clearance",
+            "certificate_hash": "321d3397267144baebf118b09f5d73ef2ccbdfa4"
+          }
+        },
+        {
+          "client_id": "83653153236-053d0admbe7q65piadle38g37hqakh99.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3U2fIRfUt9Dc9KiweKi8tnWCQcwYykJM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "83653153236-053d0admbe7q65piadle38g37hqakh99.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

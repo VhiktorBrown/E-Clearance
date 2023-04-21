@@ -1,5 +1,6 @@
 package com.theelitedevelopers.e_clearance.modules.result_clearance;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,12 +14,23 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.theelitedevelopers.e_clearance.R;
+import com.theelitedevelopers.e_clearance.data.local.Constants;
+import com.theelitedevelopers.e_clearance.data.models.CompletedUpload;
 import com.theelitedevelopers.e_clearance.databinding.ActivityResultClearanceBinding;
+import com.theelitedevelopers.e_clearance.utils.AppUtils;
 import com.theelitedevelopers.e_clearance.utils.ViewAnimation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ResultClearanceActivity extends AppCompatActivity {
 
@@ -28,8 +40,9 @@ public class ResultClearanceActivity extends AppCompatActivity {
     private int success_step = 0;
     private int current_step = 0;
     int index;
-    private int imagePosition = 0;
+    FirebaseFirestore database = FirebaseFirestore.getInstance();
     Handler handler;
+    CompletedUpload completedUpload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +65,8 @@ public class ResultClearanceActivity extends AppCompatActivity {
         view_list.get(0).setVisibility(View.VISIBLE);
         hideSoftKeyboard();
 
+        fetchStatusOfUpload(FirebaseAuth.getInstance().getUid());
+
         binding.btClearanceForm.setOnClickListener(v -> {
             index = 0;
             binding.clearanceFormProgressBar.setVisibility(View.VISIBLE);
@@ -59,7 +74,7 @@ public class ResultClearanceActivity extends AppCompatActivity {
         });
 
         binding.btResultStatus.setOnClickListener(v -> {
-            //index = 1;
+            index = 1;
             binding.resultStatusProgressBar.setVisibility(View.VISIBLE);
             mockHandler(index);
         });
@@ -71,11 +86,13 @@ public class ResultClearanceActivity extends AppCompatActivity {
             if(index == 0){
                 Toast.makeText(ResultClearanceActivity.this, "Clearance Form downloaded successfully.", Toast.LENGTH_SHORT).show();
                 binding.clearanceFormProgressBar.setVisibility(View.GONE);
+                collapseAndContinue(index);
             }else {
+                markResultClearanceAsCompleted(FirebaseAuth.getInstance().getUid(), true);
                 Toast.makeText(ResultClearanceActivity.this, "Check back for your result status in the next 3 business days.", Toast.LENGTH_SHORT).show();
                 binding.resultStatusProgressBar.setVisibility(View.GONE);
             }
-            collapseAndContinue(index);
+
         }, 500);
     }
 
@@ -123,6 +140,48 @@ public class ResultClearanceActivity extends AppCompatActivity {
         img.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
         relative.addView(img);
     }
+
+    private void markResultClearanceAsCompleted(String uid, boolean status){
+        Map<String, Object> clearanceProgress = new HashMap<>();
+        clearanceProgress.put("completedUploadForResult", status);
+        // Add a new document with a custom ID
+        database.collection(Constants.UPLOADED)
+                .document(uid)
+                .set(clearanceProgress, SetOptions.merge())
+                .addOnSuccessListener(unused -> {
+                    if(status){
+                        Toast.makeText(getApplicationContext(), Constants.RESULT_CLEARANCE_COMPLETED, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+
+                });
+    }
+
+    private void fetchStatusOfUpload(String uid){
+        database.collection("uploaded")
+                .document(uid)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if(documentSnapshot.exists()){
+                        completedUpload = documentSnapshot.toObject(CompletedUpload.class);
+                        if(completedUpload != null){
+                            if(completedUpload.getCompletedUploadForResult() != null &&
+                                    completedUpload.getCompletedUploadForResult()){
+                                AppUtils.displayToast(getApplicationContext(), Constants.STAGE_COMPLETED);
+                            }else {
+                                markResultClearanceAsCompleted(FirebaseAuth.getInstance().getUid(), false);
+                                AppUtils.displayToast(getApplicationContext(), Constants.STAGE_INCOMPLETE);
+                            }
+                        }
+                    }else {
+                        markResultClearanceAsCompleted(FirebaseAuth.getInstance().getUid(), false);
+                    }
+                }).addOnFailureListener(e -> {
+
+                });
+    }
+
 
     public void hideSoftKeyboard() {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);

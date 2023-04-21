@@ -15,8 +15,12 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.theelitedevelopers.e_clearance.R;
 import com.theelitedevelopers.e_clearance.data.local.Constants;
+import com.theelitedevelopers.e_clearance.data.models.CompletedUpload;
 import com.theelitedevelopers.e_clearance.databinding.ActivityAdminClearanceBinding;
 import com.theelitedevelopers.e_clearance.databinding.ActivityBursaryClearanceBinding;
 import com.theelitedevelopers.e_clearance.modules.payment.PayStackWebViewActivity;
@@ -24,7 +28,9 @@ import com.theelitedevelopers.e_clearance.utils.AppUtils;
 import com.theelitedevelopers.e_clearance.utils.ViewAnimation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BursaryClearanceActivity extends AppCompatActivity {
     ActivityBursaryClearanceBinding binding;
@@ -34,9 +40,11 @@ public class BursaryClearanceActivity extends AppCompatActivity {
     private int current_step = 0;
     int index;
     Handler handler;
-    int PICK_IMAGE_MULTIPLE = 1;
+    int PICK_IMAGE_MULTIPLE = 2;
     ArrayList<Uri> mArrayUri = new ArrayList<>();
     int position = 0;
+    FirebaseFirestore database = FirebaseFirestore.getInstance();
+    CompletedUpload completedUpload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +66,7 @@ public class BursaryClearanceActivity extends AppCompatActivity {
 
         view_list.get(0).setVisibility(View.VISIBLE);
         hideSoftKeyboard();
-
+        fetchStatusOfUpload(FirebaseAuth.getInstance().getUid());
 
         binding.btPayConvocationFee.setOnClickListener(v -> {
             index = 0;
@@ -78,6 +86,11 @@ public class BursaryClearanceActivity extends AppCompatActivity {
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
             intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_MULTIPLE);
+        });
+
+        binding.btUploadReceipts.setOnClickListener(v -> {
+            index = 1;
+            mockHandler(index);
         });
     }
 
@@ -118,12 +131,10 @@ public class BursaryClearanceActivity extends AppCompatActivity {
     private void mockHandler(int index){
         handler = new Handler();
         handler.postDelayed(() -> {
-            if(index == 0){
-                collapseAndContinue(index);
-                AppUtils.displayToast(getApplicationContext(), "Convocation Fees payment successful.");
-            }else {
+            if(index == 1){
                 AppUtils.displayToast(getApplicationContext(), "School Fees Receipts submitted successfully");
                 binding.uploadReceiptsProgressBar.setVisibility(View.GONE);
+                markResultClearanceAsCompleted(FirebaseAuth.getInstance().getUid(), true);
             }
 
         }, 500);
@@ -172,6 +183,47 @@ public class BursaryClearanceActivity extends AppCompatActivity {
         img.setBackgroundColor(Color.TRANSPARENT);
         img.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_IN);
         relative.addView(img);
+    }
+
+    private void markResultClearanceAsCompleted(String uid, boolean status){
+        Map<String, Object> clearanceProgress = new HashMap<>();
+        clearanceProgress.put("completedUploadForBursary", status);
+        // Add a new document with a custom ID
+        database.collection(Constants.UPLOADED)
+                .document(uid)
+                .set(clearanceProgress, SetOptions.merge())
+                .addOnSuccessListener(unused -> {
+                    if(status){
+                        Toast.makeText(getApplicationContext(), Constants.BURSARY_CLEARANCE_COMPLETED, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(e -> {
+
+                });
+    }
+
+    private void fetchStatusOfUpload(String uid){
+        database.collection(Constants.UPLOADED)
+                .document(uid)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if(documentSnapshot.exists()){
+                        completedUpload = documentSnapshot.toObject(CompletedUpload.class);
+                        if(completedUpload != null){
+                            if(completedUpload.getCompletedUploadForBursary() != null &&
+                            completedUpload.getCompletedUploadForBursary()){
+                                AppUtils.displayToast(getApplicationContext(), Constants.STAGE_COMPLETED);
+                            }else {
+                                markResultClearanceAsCompleted(FirebaseAuth.getInstance().getUid(), false);
+                                AppUtils.displayToast(getApplicationContext(), Constants.STAGE_INCOMPLETE);
+                            }
+                        }
+                    }else {
+                        markResultClearanceAsCompleted(FirebaseAuth.getInstance().getUid(), false);
+                    }
+                }).addOnFailureListener(e -> {
+
+        });
     }
 
     public void hideSoftKeyboard() {

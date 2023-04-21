@@ -17,16 +17,15 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.firestore.SetOptions;
 import com.theelitedevelopers.e_clearance.MainActivity;
-import com.theelitedevelopers.e_clearance.R;
-import com.theelitedevelopers.e_clearance.data.local.Constants;
-import com.theelitedevelopers.e_clearance.data.local.SharedPref;
 import com.theelitedevelopers.e_clearance.data.models.ClearanceProgress;
 import com.theelitedevelopers.e_clearance.data.models.Student;
 import com.theelitedevelopers.e_clearance.databinding.ActivityLoginBinding;
@@ -80,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = firebaseAuth.getCurrentUser();
 
                             //fetch Clearance Details from Database
-                            getClearanceProgressForStudent(user.getUid());
+                            getClearanceProgressForStudent(student, user.getUid());
 
                         } else {
                             binding.progressBar.setVisibility(View.GONE);
@@ -94,15 +93,51 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    private void getStudentDetails(String uid){
-        database.collection("students")
-                .whereEqualTo("uid", uid)
+    private void saveProgressIfDoesNotExist(String uid){
+
+        Map<String, Object> clearanceProgress = new HashMap<>();
+        clearanceProgress.put("clearedResults", false);
+        clearanceProgress.put("clearedDepartment", false);
+        clearanceProgress.put("clearedFaculty", false);
+        clearanceProgress.put("clearedLibrary", false);
+        clearanceProgress.put("clearedSecurity", false);
+        clearanceProgress.put("clearedStudentAffairs", false);
+        clearanceProgress.put("clearedAlumni", false);
+        clearanceProgress.put("clearedAdmin", false);
+        clearanceProgress.put("clearedBursary", false);
+
+        // Add a new document with a generated ID
+        database.collection("clearanceProgress")
+                .document(uid)
+                .set(clearanceProgress, SetOptions.merge())
+                .addOnSuccessListener(unused -> {
+                    Toast.makeText(getApplicationContext(), "Added New Student Data to Database.", Toast.LENGTH_SHORT).show();
+                })
+                .addOnFailureListener(e -> {
+
+                });
+    }
+
+
+    private void getClearanceProgressForStudent(Student student, String uid){
+        getStudent(uid);
+        database.collection("clearanceProgress")
+                .document( uid)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        student = task.getResult().getDocuments().get(0).toObject(Student.class);
-                        if(student != null){
-                            student.setId(task.getResult().getDocuments().get(0).getId());
+                        binding.progressBar.setVisibility(View.GONE);
+                        if(task.getResult() != null){
+                            clearanceProgress = task.getResult().toObject(ClearanceProgress.class);
+                            if(clearanceProgress != null){
+                                clearanceProgress.setId(task.getResult().getId());
+                                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                finish();
+                            }
+                        }else {
+                            saveProgressIfDoesNotExist(uid);
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            finish();
                         }
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
@@ -110,21 +145,25 @@ public class LoginActivity extends AppCompatActivity {
                 });
     }
 
-    private void getClearanceProgressForStudent(String uid){
-        database.collection("clearanceProgress")
-                .whereEqualTo("uid", uid)
+    private void getStudent(String uid){
+        database.collection("students")
+                .document( uid)
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        clearanceProgress = task.getResult().getDocuments().get(0).toObject(ClearanceProgress.class);
-                        if(clearanceProgress != null){
-                            clearanceProgress.setId(task.getResult().getDocuments().get(0).getId());
+                        if(task.getResult() != null){
+                            student = task.getResult().toObject(Student.class);
+                            if(student != null){
+                                student.setId(task.getResult().getId());
+                                AppUtils.saveData(LoginActivity.this, student);
+                            }
                         }
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
                     }
                 });
     }
+
 
 
     @Override
@@ -155,12 +194,5 @@ public class LoginActivity extends AppCompatActivity {
         return super.dispatchTouchEvent(event);
     }
 
-    private void saveData(Student student){
-        SharedPref.getInstance(getApplicationContext()).saveString(Constants.ID, student.getId());
-        SharedPref.getInstance(getApplicationContext()).saveString(Constants.NAME, student.getName());
-        SharedPref.getInstance(getApplicationContext()).saveString(Constants.EMAIL, student.getEmail());
-        SharedPref.getInstance(getApplicationContext()).saveString(Constants.REG_NUMBER, student.getRegNumber());
-        SharedPref.getInstance(getApplicationContext()).saveString(Constants.DEPARTMENT, student.getDepartment());
-        SharedPref.getInstance(getApplicationContext()).saveString(Constants.FACULTY, student.getFaculty());
-    }
+
 }

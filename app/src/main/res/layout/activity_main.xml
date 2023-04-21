@@ -33,6 +33,19 @@
                 app:tint="@color/startColor" />
 
             <TextView
+                android:id="@+id/log_out"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:fontFamily="@font/poppins_bold"
+                android:textColor="@color/primary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp" />
+
+
+            <TextView
                 android:id="@+id/regNumber_department"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -78,7 +91,7 @@
                     android:layout_marginEnd="@dimen/_20sdp"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/completed_bg">
+                    android:background="@drawable/start_bg">
 
                     <TextView
                         android:id="@+id/results_clearance_text"
@@ -86,7 +99,7 @@
                         android:layout_height="wrap_content"
                         android:text="Results Status Clearance"
                         android:fontFamily="@font/poppins_bold"
-                        android:textColor="@color/completedColor"
+                        android:textColor="@color/primary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginStart="@dimen/_20sdp"
@@ -98,7 +111,7 @@
                         android:layout_height="wrap_content"
                         android:text="Start your clearance by downloading clearance form ask to get your results status."
                         android:fontFamily="@font/poppins_regular"
-                        android:textColor="@color/completedColor"
+                        android:textColor="@color/textColor"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="@dimen/_20sdp"
@@ -112,7 +125,7 @@
                         android:layout_height="wrap_content"
                         android:text="Completed"
                         android:fontFamily="@font/poppins_bold"
-                        android:textColor="@color/completedColor"
+                        android:textColor="@color/startColor"
                         app:layout_constraintTop_toTopOf="@+id/results_clearance_text"
                         app:layout_constraintBottom_toBottomOf="@+id/results_clearance_text"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -128,6 +141,7 @@
                     android:background="@drawable/completed_rounded"
                     android:src="@drawable/ic_done"
                     android:padding="@dimen/_3sdp"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/results_layout"
                     app:layout_constraintBottom_toBottomOf="@+id/results_layout"
@@ -139,7 +153,7 @@
                     android:layout_height="@dimen/_20sdp"
                     android:background="@drawable/start_rounded"
                     android:text="1"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:textAlignment="gravity"
                     android:gravity="center"
                     android:textColor="@color/startColor"
@@ -161,7 +175,7 @@
                     android:layout_marginEnd="@dimen/_20sdp"
                     app:layout_constraintTop_toBottomOf="@+id/results_layout"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:background="@drawable/completed_bg">
+                    android:background="@drawable/start_bg">
 
                     <TextView
                         android:id="@+id/departmental_clearance_text"
@@ -169,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:text="Departmental Clearance"
                         android:fontFamily="@font/poppins_bold"
-                        android:textColor="@color/completedColor"
+                        android:textColor="@color/primary"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginStart="@dimen/_20sdp"
@@ -181,7 +195,7 @@
                         android:layout_height="wrap_content"
                         android:text="Upload all your deparmental related documents"
                         android:fontFamily="@font/poppins_regular"
-                        android:textColor="@color/completedColor"
+                        android:textColor="@color/textColor"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="@dimen/_20sdp"
@@ -194,8 +208,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Completed"
+                        android:visibility="gone"
                         android:fontFamily="@font/poppins_bold"
-                        android:textColor="@color/completedColor"
+                        android:textColor="@color/startColor"
                         app:layout_constraintTop_toTopOf="@+id/departmental_clearance_text"
                         app:layout_constraintBottom_toBottomOf="@+id/departmental_clearance_text"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -210,7 +225,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/departmental_clearance_text"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="@dimen/_15sdp"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         app:tint="@color/textColor" />
 
 
@@ -223,6 +238,7 @@
                     android:background="@drawable/completed_rounded"
                     android:src="@drawable/ic_done"
                     android:padding="@dimen/_3sdp"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/departmental_layout"
                     app:layout_constraintBottom_toBottomOf="@+id/departmental_layout"
@@ -233,8 +249,8 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:background="@drawable/start_rounded"
-                    android:text="1"
-                    android:visibility="gone"
+                    android:text="2"
+                    android:visibility="visible"
                     android:textAlignment="gravity"
                     android:gravity="center"
                     android:textColor="@color/startColor"
@@ -288,6 +304,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Start"
+                        android:visibility="gone"
                         android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/startColor"
                         app:layout_constraintTop_toTopOf="@+id/faculty_clearance_text"
@@ -304,7 +321,7 @@
                         app:layout_constraintBottom_toBottomOf="@+id/faculty_clearance_text"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="@dimen/_15sdp"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         app:tint="@color/textColor" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -327,7 +344,7 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:background="@drawable/start_rounded"
-                    android:text="2"
+                    android:text="3"
                     android:visibility="visible"
                     android:textAlignment="gravity"
                     android:gravity="center"
@@ -364,7 +381,7 @@
                         android:layout_marginTop="@dimen/_15sdp" />
 
                     <TextView
-                        android:id="@+id/Library_clearance_details"
+                        android:id="@+id/library_clearance_details"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Upload all your Library related documents"
@@ -421,7 +438,7 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:background="@drawable/start_rounded"
-                    android:text="3"
+                    android:text="4"
                     android:visibility="visible"
                     android:textAlignment="gravity"
                     android:gravity="center"
@@ -515,7 +532,7 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:background="@drawable/start_rounded"
-                    android:text="4"
+                    android:text="5"
                     android:visibility="visible"
                     android:textAlignment="gravity"
                     android:gravity="center"
@@ -610,7 +627,7 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:background="@drawable/start_rounded"
-                    android:text="5"
+                    android:text="6"
                     android:visibility="visible"
                     android:textAlignment="gravity"
                     android:gravity="center"
@@ -705,7 +722,7 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:background="@drawable/start_rounded"
-                    android:text="6"
+                    android:text="7"
                     android:visibility="visible"
                     android:textAlignment="gravity"
                     android:gravity="center"
@@ -800,7 +817,7 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:background="@drawable/start_rounded"
-                    android:text="7"
+                    android:text="8"
                     android:visibility="visible"
                     android:textAlignment="gravity"
                     android:gravity="center"
@@ -896,7 +913,7 @@
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
                     android:background="@drawable/start_rounded"
-                    android:text="8"
+                    android:text="9"
                     android:visibility="visible"
                     android:textAlignment="gravity"
                     android:gravity="center"
