@@ -146,22 +146,35 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getClearanceProgressForStudent(String uid){
+//        database.collection("clearanceProgress")
+//                .document(uid)
+//                .get()
+//                .addOnCompleteListener(task -> {
+//                    if (task.isSuccessful()) {
+//                        if(task.getResult() != null){
+//                            clearanceProgress = task.getResult().toObject(ClearanceProgress.class);
+//                            if(clearanceProgress != null){
+//                                clearanceProgress.setId(task.getResult().getId());
+//                                setProgress(clearanceProgress);
+//                            }
+//                        }
+//                    } else {
+//                        Log.d(TAG, "Error getting documents: ", task.getException());
+//                    }
+//                });
+
         database.collection("clearanceProgress")
                 .document(uid)
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        if(task.getResult() != null){
-                            clearanceProgress = task.getResult().toObject(ClearanceProgress.class);
-                            if(clearanceProgress != null){
-                                clearanceProgress.setId(task.getResult().getId());
-                                setProgress(clearanceProgress);
-                            }
+                .addSnapshotListener((value, error) -> {
+                    if(value != null){
+                        clearanceProgress = value.toObject(ClearanceProgress.class);
+                        if(clearanceProgress != null){
+                            clearanceProgress.setId(value.getId());
+                            setProgress(clearanceProgress);
                         }
-                    } else {
-                        Log.d(TAG, "Error getting documents: ", task.getException());
                     }
-                });
+        });
+
     }
 
     private void setProgress(ClearanceProgress clearanceProgress){
@@ -172,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
             binding.resultsClearanceDetails.setTextColor(getResources().getColor(R.color.completedColor));
             binding.resultsIndexTextView.setVisibility(View.GONE);
             binding.resultsClearanceStatus.setText(Constants.COMPLETED);
+            binding.resultsClearanceStatus.setVisibility(View.VISIBLE);
             binding.resultsClearanceStatus.setTextColor(getResources().getColor(R.color.completedColor));
 
             //check if Departmental Clearance has been done
@@ -182,6 +196,8 @@ public class MainActivity extends AppCompatActivity {
                 binding.departmentalClearanceDetails.setTextColor(getResources().getColor(R.color.completedColor));
                 binding.departmentalIndexTextView.setVisibility(View.GONE);
                 binding.departmentalClearanceStatus.setText(Constants.COMPLETED);
+                binding.departmentalClearanceLocked.setVisibility(View.GONE);
+                binding.departmentalClearanceStatus.setVisibility(View.VISIBLE);
                 binding.departmentalClearanceStatus.setTextColor(getResources().getColor(R.color.completedColor));
 
                 if(clearanceProgress.getClearedFaculty()){
@@ -191,6 +207,8 @@ public class MainActivity extends AppCompatActivity {
                     binding.facultyClearanceDetails.setTextColor(getResources().getColor(R.color.completedColor));
                     binding.facultyIndexTextView.setVisibility(View.GONE);
                     binding.facultyClearanceStatus.setText(Constants.COMPLETED);
+                    binding.facultyClearanceLocked.setVisibility(View.GONE);
+                    binding.facultyClearanceStatus.setVisibility(View.VISIBLE);
                     binding.facultyClearanceStatus.setTextColor(getResources().getColor(R.color.completedColor));
 
                     if(clearanceProgress.getClearedLibrary()){
@@ -200,6 +218,8 @@ public class MainActivity extends AppCompatActivity {
                         binding.libraryClearanceDetails.setTextColor(getResources().getColor(R.color.completedColor));
                         binding.libraryIndexTextView.setVisibility(View.GONE);
                         binding.libraryClearanceStatus.setText(Constants.COMPLETED);
+                        binding.libraryClearanceLocked.setVisibility(View.GONE);
+                        binding.libraryClearanceStatus.setVisibility(View.VISIBLE);
                         binding.libraryClearanceStatus.setTextColor(getResources().getColor(R.color.completedColor));
 
                         if(clearanceProgress.getClearedSecurity()){
@@ -209,6 +229,8 @@ public class MainActivity extends AppCompatActivity {
                             binding.securityClearanceDetails.setTextColor(getResources().getColor(R.color.completedColor));
                             binding.securityIndexTextView.setVisibility(View.GONE);
                             binding.securityClearanceStatus.setText(Constants.COMPLETED);
+                            binding.securityClearanceLocked.setVisibility(View.GONE);
+                            binding.securityClearanceStatus.setVisibility(View.VISIBLE);
                             binding.securityClearanceStatus.setTextColor(getResources().getColor(R.color.completedColor));
 
                             if(clearanceProgress.getClearedStudentAffairs()){
@@ -218,6 +240,8 @@ public class MainActivity extends AppCompatActivity {
                                 binding.studentAffairsClearanceDetails.setTextColor(getResources().getColor(R.color.completedColor));
                                 binding.studentAffairsIndexTextView.setVisibility(View.GONE);
                                 binding.studentAffairsClearanceStatus.setText(Constants.COMPLETED);
+                                binding.studentAffairsClearanceLocked.setVisibility(View.GONE);
+                                binding.studentAffairsClearanceStatus.setVisibility(View.VISIBLE);
                                 binding.studentAffairsClearanceStatus.setTextColor(getResources().getColor(R.color.completedColor));
 
                                 if(clearanceProgress.getClearedAlumni()){
@@ -227,6 +251,8 @@ public class MainActivity extends AppCompatActivity {
                                     binding.alumniClearanceDetails.setTextColor(getResources().getColor(R.color.completedColor));
                                     binding.alumniIndexTextView.setVisibility(View.GONE);
                                     binding.alumniClearanceStatus.setText(Constants.COMPLETED);
+                                    binding.alumniClearanceLocked.setVisibility(View.GONE);
+                                    binding.alumniClearanceStatus.setVisibility(View.VISIBLE);
                                     binding.alumniClearanceStatus.setTextColor(getResources().getColor(R.color.completedColor));
 
                                     if(clearanceProgress.getClearedAdmin()){
@@ -236,6 +262,8 @@ public class MainActivity extends AppCompatActivity {
                                         binding.adminClearanceDetails.setTextColor(getResources().getColor(R.color.completedColor));
                                         binding.adminIndexTextView.setVisibility(View.GONE);
                                         binding.adminClearanceStatus.setText(Constants.COMPLETED);
+                                        binding.adminClearanceLocked.setVisibility(View.GONE);
+                                        binding.adminClearanceStatus.setVisibility(View.VISIBLE);
                                         binding.adminClearanceStatus.setTextColor(getResources().getColor(R.color.completedColor));
 
                                         if(clearanceProgress.getClearedBursary()){
@@ -245,6 +273,8 @@ public class MainActivity extends AppCompatActivity {
                                             binding.bursaryClearanceDetails.setTextColor(getResources().getColor(R.color.completedColor));
                                             binding.bursaryIndexTextView.setVisibility(View.GONE);
                                             binding.bursaryClearanceStatus.setText(Constants.COMPLETED);
+                                            binding.bursaryClearanceLocked.setVisibility(View.GONE);
+                                            binding.bursaryClearanceStatus.setVisibility(View.VISIBLE);
                                             binding.bursaryClearanceStatus.setTextColor(getResources().getColor(R.color.completedColor));
                                         }else {
                                             lockedLevels(8);
@@ -465,7 +495,7 @@ public class MainActivity extends AppCompatActivity {
                 binding.facultyLayout.setBackground(getResources().getDrawable(R.drawable.start_bg));
                 binding.facultyClearanceText.setTextColor(getResources().getColor(R.color.primary));
                 binding.facultyClearanceDetails.setTextColor(getResources().getColor(R.color.textColor));
-                binding.departmentalClearanceStatus.setText("Start");
+                binding.facultyClearanceStatus.setText("Start");
                 binding.facultyClearanceStatus.setTextColor(getResources().getColor(R.color.startColor));
                 binding.facultyClearanceStatus.setVisibility(View.VISIBLE);
                 binding.facultyClearanceLocked.setVisibility(View.GONE);

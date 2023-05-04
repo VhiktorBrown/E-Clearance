@@ -154,7 +154,7 @@
                             android:id="@+id/pay_security_fee_details"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Make payment of NGN 300 for the Securoty Fee and a staff will begin your clearance process."
+                            android:text="Make payment of NGN 3,000 for the Security Fee and a staff will begin your clearance process."
                             android:background="?selectableItemBackgroundBorderless"
                             android:fontFamily="@font/poppins_regular"
                             android:textColor="@color/primary"

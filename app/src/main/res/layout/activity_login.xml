@@ -20,7 +20,7 @@
         android:id="@+id/login_now_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login now"
+        android:text="Admin Login"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_image"
@@ -54,7 +54,7 @@
             android:textColor="@color/textColor"
             android:fontFamily="@font/poppins_regular"
             android:inputType="textEmailAddress"
-            android:hint="School Email" />
+            android:hint="Admin Email" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,7 +100,7 @@
         android:background="@drawable/primary_button"
         android:fontFamily="@font/poppins_bold"
         android:layout_marginTop="@dimen/_20sdp"
-        android:text="Log in"
+        android:text="Log in as Admin"
         android:textColor="@color/secondary"
         android:textAllCaps="false"
         android:textSize="@dimen/_14ssp" />
