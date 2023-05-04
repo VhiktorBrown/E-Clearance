@@ -6,6 +6,6 @@ Login Screen          |          Clearance Progress Screen 1 |               Cle
  :-------------------------:|:-------------------------:|:--------------------------:
 <img src="screenshots/eclearance_login_page.jpg" width = "430" height = "530"/>            |  <img src="screenshots/eclearance_main_1.jpg" width = "430" height="530"/>  | <img src="screenshots/eclearance_main_2.jpg" width = "430" height="530"/>
 
-Library Clearance Screen          |          Admin Clearance Screen  |              Clearance Progress Screen 2
+Library Clearance Screen          |          Admin Clearance Screen  |              Student Affairs Clearance screen
  :-------------------------:|:-------------------------:|:--------------------------:
 <img src="screenshots/eclearance_library_screen.jpg" width = "430" height = "530"/>            |  <img src="screenshots/eclearance_admin_clearance_screen.jpg" width = "430" height="530"/> | <img src="screenshots/eclearance_student_affairs.jpg" width = "430" height="530"/>
